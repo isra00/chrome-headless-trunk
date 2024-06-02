@@ -8,6 +8,19 @@ Using the binary from the Chromium snapshot bucket
 $ docker run -it --rm -p=0.0.0.0:9222:9222 --name=chrome-headless -v /tmp/chromedata/:/data alpeware/chrome-headless-trunk
 ```
 
+With custom Chrome options:
+
+```
+$ docker run -it --rm -p=0.0.0.0:9222:9222 --name=chrome-headless -v /tmp/chromedata/:/data  -e "CHROME_OPTS=--other-options" alpeware/chrome-headless-trunk
+```
+
+For operations not compatible with debug mode, include the NODEBUG variable:
+
+```
+$ docker run -it --rm -e "NODEBUG=1" -e "CHROME_OPTS=--dump-dom https://google.com" alpeware/chrome-headless-trunk
+```
+
+
 Inspired by
 - [beaufortfrancois](https://github.com/beaufortfrancois/download-chromium)
 - [National Library of Norway](https://github.com/nlnwa/docker-chrome-headless)
